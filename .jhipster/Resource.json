@@ -1,0 +1,101 @@
+{
+  "applications": "*",
+  "changelogDate": "20220813153549",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "resource",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "resourceType",
+      "fieldType": "ResourceType",
+      "fieldValues": "ARTICLES (articles),DOCUMENTS (documents),PRESENTATION (presentations),IMAGES (images),URLS (url's),ANNOUNCEMENTS (announcements),OTHER (other)"
+    },
+    {
+      "fieldName": "angeRage",
+      "fieldType": "AgeRange",
+      "fieldValues": "AGE_ALL (all ages),AGE_04_06 (age 4-6),AGE_07_09 (age 7-9),AGE_10_12 (age 10-12),AGE_13_15 (age 13-15),AGE_16_18 (age 16-18)"
+    },
+    {
+      "fieldName": "file",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    },
+    {
+      "fieldName": "url",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "author",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "lastUpdated",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "activated",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "views",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "votes",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "approvedBy",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Resource",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "label",
+      "otherEntityName": "subject",
+      "relationshipName": "subject",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "label",
+      "otherEntityName": "topic",
+      "otherEntityRelationshipName": "resource",
+      "ownerSide": true,
+      "relationshipName": "topics",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityField": "label",
+      "otherEntityName": "skill",
+      "otherEntityRelationshipName": "resource",
+      "ownerSide": true,
+      "relationshipName": "skills",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

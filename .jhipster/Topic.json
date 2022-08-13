@@ -1,0 +1,33 @@
+{
+  "applications": "*",
+  "changelogDate": "20220813153551",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "topic",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "creationDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Topic",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "resource",
+      "otherEntityRelationshipName": "topics",
+      "ownerSide": false,
+      "relationshipName": "resource",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

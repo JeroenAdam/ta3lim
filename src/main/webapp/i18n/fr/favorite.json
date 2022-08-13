@@ -1,0 +1,27 @@
+{
+  "ta3LimApp": {
+    "favorite": {
+      "home": {
+        "title": "Favorites",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Favorite",
+        "createOrEditLabel": "Créer ou éditer un Favorite",
+        "search": "Recherche pour Favorite",
+        "notFound": "Aucun Favorite trouvé"
+      },
+      "created": "Un nouveau Favorite a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Favorite avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Favorite avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Favorite {{ id }} ?"
+      },
+      "detail": {
+        "title": "Favorite"
+      },
+      "id": "ID",
+      "creationDate": "Creation Date",
+      "user": "User",
+      "resource": "Resource"
+    }
+  }
+}

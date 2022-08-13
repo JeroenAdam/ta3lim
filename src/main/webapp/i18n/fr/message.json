@@ -1,0 +1,29 @@
+{
+  "ta3LimApp": {
+    "message": {
+      "home": {
+        "title": "Messages",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Message",
+        "createOrEditLabel": "Créer ou éditer un Message",
+        "search": "Recherche pour Message",
+        "notFound": "Aucun Message trouvé"
+      },
+      "created": "Un nouveau Message a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Message avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Message avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Message {{ id }} ?"
+      },
+      "detail": {
+        "title": "Message"
+      },
+      "id": "ID",
+      "creationDate": "Creation Date",
+      "messageText": "Message Text",
+      "isDelivered": "Is Delivered",
+      "receiver": "Receiver",
+      "sender": "Sender"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20220813153553",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "votes",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Votes",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityField": "id",
+      "otherEntityName": "resource",
+      "relationshipName": "resource",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

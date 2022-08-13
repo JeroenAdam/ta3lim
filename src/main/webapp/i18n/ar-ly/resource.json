@@ -1,0 +1,41 @@
+{
+  "ta3LimApp": {
+    "resource": {
+      "home": {
+        "title": "Resources",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Resource",
+        "createOrEditLabel": "Create or edit a Resource",
+        "search": "Search for Resource",
+        "notFound": "No Resources found"
+      },
+      "created": "A new Resource is created with identifier {{ param }}",
+      "updated": "A Resource is updated with identifier {{ param }}",
+      "deleted": "A Resource is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Resource {{ id }}?"
+      },
+      "detail": {
+        "title": "Resource"
+      },
+      "id": "ID",
+      "title": "Title",
+      "creationDate": "Creation Date",
+      "description": "Description",
+      "resourceType": "Resource Type",
+      "angeRage": "Ange Rage",
+      "file": "File",
+      "url": "Url",
+      "author": "Author",
+      "lastUpdated": "Last Updated",
+      "activated": "Activated",
+      "views": "Views",
+      "votes": "Votes",
+      "approvedBy": "Approved By",
+      "user": "User",
+      "subject": "Subject",
+      "topics": "Topics",
+      "skills": "Skills"
+    }
+  }
+}

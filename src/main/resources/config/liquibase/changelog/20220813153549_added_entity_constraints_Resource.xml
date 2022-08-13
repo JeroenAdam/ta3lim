@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Resource.
+    -->
+    <changeSet id="20220813153549-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="resource"
+                                 constraintName="fk_resource__user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="subject_id"
+                                 baseTableName="resource"
+                                 constraintName="fk_resource__subject_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="subject"/>
+
+        <addForeignKeyConstraint baseColumnNames="resource_id"
+                                 baseTableName="rel_resource__topics"
+                                 constraintName="fk_rel_resource__topics__resource_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="resource"/>
+
+        <addForeignKeyConstraint baseColumnNames="topics_id"
+                                 baseTableName="rel_resource__topics"
+                                 constraintName="fk_rel_resource__topics__topics_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="topic"/>
+
+        <addForeignKeyConstraint baseColumnNames="resource_id"
+                                 baseTableName="rel_resource__skills"
+                                 constraintName="fk_rel_resource__skills__resource_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="resource"/>
+
+        <addForeignKeyConstraint baseColumnNames="skills_id"
+                                 baseTableName="rel_resource__skills"
+                                 constraintName="fk_rel_resource__skills__skills_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="skill"/>
+    </changeSet>
+</databaseChangeLog>

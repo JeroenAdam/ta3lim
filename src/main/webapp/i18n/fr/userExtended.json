@@ -1,0 +1,37 @@
+{
+  "ta3LimApp": {
+    "userExtended": {
+      "home": {
+        "title": "UserExtendeds",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau User Extended",
+        "createOrEditLabel": "Créer ou éditer un User Extended",
+        "search": "Recherche pour User Extended",
+        "notFound": "Aucun User Extended trouvé"
+      },
+      "created": "Un nouveau User Extended a été créé avec l'identifiant {{ param }}",
+      "updated": "Le User Extended avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le User Extended avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le User Extended {{ id }} ?"
+      },
+      "detail": {
+        "title": "User Extended"
+      },
+      "id": "ID",
+      "lastLogin": "Last Login",
+      "aboutMe": "About Me",
+      "occupation": "Occupation",
+      "socialMedia": "Social Media",
+      "civilStatus": "Civil Status",
+      "firstchild": "Firstchild",
+      "secondchild": "Secondchild",
+      "thirdchild": "Thirdchild",
+      "fourthchild": "Fourthchild",
+      "filesquota": "Filesquota",
+      "approverSince": "Approver Since",
+      "lastApproval": "Last Approval",
+      "user": "User"
+    }
+  }
+}

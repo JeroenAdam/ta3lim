@@ -1,0 +1,27 @@
+{
+  "ta3LimApp": {
+    "skill": {
+      "home": {
+        "title": "Skills",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Skill",
+        "createOrEditLabel": "Create or edit a Skill",
+        "search": "Search for Skill",
+        "notFound": "No Skills found"
+      },
+      "created": "A new Skill is created with identifier {{ param }}",
+      "updated": "A Skill is updated with identifier {{ param }}",
+      "deleted": "A Skill is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Skill {{ id }}?"
+      },
+      "detail": {
+        "title": "Skill"
+      },
+      "id": "ID",
+      "label": "Label",
+      "creationDate": "Creation Date",
+      "resource": "Resource"
+    }
+  }
+}

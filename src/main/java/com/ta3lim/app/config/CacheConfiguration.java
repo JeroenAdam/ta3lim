@@ -46,6 +46,19 @@ public class CacheConfiguration {
             createCache(cm, com.ta3lim.app.domain.User.class.getName());
             createCache(cm, com.ta3lim.app.domain.Authority.class.getName());
             createCache(cm, com.ta3lim.app.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.ta3lim.app.domain.Resource.class.getName());
+            createCache(cm, com.ta3lim.app.domain.Resource.class.getName() + ".topics");
+            createCache(cm, com.ta3lim.app.domain.Resource.class.getName() + ".skills");
+            createCache(cm, com.ta3lim.app.domain.Subject.class.getName());
+            createCache(cm, com.ta3lim.app.domain.Topic.class.getName());
+            createCache(cm, com.ta3lim.app.domain.Topic.class.getName() + ".resources");
+            createCache(cm, com.ta3lim.app.domain.Skill.class.getName());
+            createCache(cm, com.ta3lim.app.domain.Skill.class.getName() + ".resources");
+            createCache(cm, com.ta3lim.app.domain.Votes.class.getName());
+            createCache(cm, com.ta3lim.app.domain.Notification.class.getName());
+            createCache(cm, com.ta3lim.app.domain.Message.class.getName());
+            createCache(cm, com.ta3lim.app.domain.Favorite.class.getName());
+            createCache(cm, com.ta3lim.app.domain.UserExtended.class.getName());
             // jhipster-needle-caffeine-add-entry
         };
     }

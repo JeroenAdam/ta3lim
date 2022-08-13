@@ -1,0 +1,138 @@
+entity Resource {
+  title String required
+  creationDate LocalDate
+  description String
+  resourceType ResourceType
+  angeRage AgeRange
+  file Blob
+  url String
+  author String
+  lastUpdated LocalDate
+  activated Boolean
+  views Long
+  votes Long
+  approvedBy String
+}
+
+enum ResourceType {
+  ARTICLES("articles")
+  DOCUMENTS("documents")
+  PRESENTATION("presentations")
+  IMAGES("images")
+  URLS("url's")
+  ANNOUNCEMENTS("announcements")
+  OTHER("other")
+}
+
+entity Subject {
+  label String
+  creationDate LocalDate
+}
+
+entity Topic {
+  label String
+  creationDate LocalDate
+}
+
+entity Skill {
+  label String
+  creationDate LocalDate
+}
+
+enum AgeRange {
+  AGE_ALL ("all ages")
+  AGE_04_06 ("age 4-6")
+  AGE_07_09 ("age 7-9")
+  AGE_10_12 ("age 10-12")
+  AGE_13_15 ("age 13-15")
+  AGE_16_18 ("age 16-18")
+}
+
+entity Votes {
+}
+
+entity Notification {
+    creationDate LocalDate
+    notificationDate LocalDate
+    notificationType NotificationType
+    notificationText String
+    isDelivered Boolean
+    isDeleted Boolean
+}
+
+enum NotificationType {
+  UNREAD_MESSAGES("Unread messages")
+  ACCEPTED("Submission accepted")
+  REJECTED("Submission rejected")
+  NONE("None")
+}
+
+entity Message {
+    creationDate LocalDate
+    messageText String
+    isDelivered Boolean
+}
+
+entity Favorite {
+    creationDate LocalDate
+}
+
+entity UserExtended {
+  lastLogin LocalDate
+  aboutMe String
+  occupation String
+  socialMedia String
+  civilStatus CivilStatus
+  firstchild Children
+  secondchild Children
+  thirdchild Children
+  fourthchild Children
+  filesquota Integer
+  approverSince LocalDate
+  lastApproval LocalDate
+}
+
+enum Children {
+  AGE_00_03 ("age 0-3")
+  AGE_04_06 ("age 4-6")
+  AGE_07_09 ("age 7-9")
+  AGE_10_12 ("age 10-12")
+  AGE_13_15 ("age 13-15")
+  AGE_16_18 ("age 16-18")
+}
+
+enum CivilStatus {
+  MARRIED ("Married")
+  DIVORCED ("Divorced")
+  WIDOWER ("Widower")
+  SEPARATED ("Separated")
+  SINGLE ("Single")
+  ENGAGED ("Engaged")
+  OTHER ("Other")
+}
+
+relationship OneToOne {
+  UserExtended{user(login)} to User
+}
+
+relationship ManyToOne {
+  Resource{user(login)} to User
+  Notification{user(login)} to User
+  Resource{subject(label)} to Subject
+  Votes{user(login)} to User
+  Votes{resource(id)} to Resource
+  Favorite{user(login)} to User
+  Favorite{resource(id)} to Resource
+  Message{receiver(login)} to User
+  Message{sender(login)} to User
+}
+
+relationship ManyToMany {
+  Resource{topics(label)} to Topic{resource(id)}
+  Resource{skills(label)} to Skill{resource(id)}
+}
+
+paginate all with pagination
+service all with serviceImpl
+dto all with mapstruct
+filter *

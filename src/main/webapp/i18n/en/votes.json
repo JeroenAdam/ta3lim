@@ -1,0 +1,26 @@
+{
+  "ta3LimApp": {
+    "votes": {
+      "home": {
+        "title": "Votes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Votes",
+        "createOrEditLabel": "Create or edit a Votes",
+        "search": "Search for Votes",
+        "notFound": "No Votes found"
+      },
+      "created": "A new Votes is created with identifier {{ param }}",
+      "updated": "A Votes is updated with identifier {{ param }}",
+      "deleted": "A Votes is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Votes {{ id }}?"
+      },
+      "detail": {
+        "title": "Votes"
+      },
+      "id": "ID",
+      "user": "User",
+      "resource": "Resource"
+    }
+  }
+}

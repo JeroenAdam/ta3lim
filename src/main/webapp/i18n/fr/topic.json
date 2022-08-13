@@ -1,0 +1,27 @@
+{
+  "ta3LimApp": {
+    "topic": {
+      "home": {
+        "title": "Topics",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Topic",
+        "createOrEditLabel": "Créer ou éditer un Topic",
+        "search": "Recherche pour Topic",
+        "notFound": "Aucun Topic trouvé"
+      },
+      "created": "Un nouveau Topic a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Topic avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Topic avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Topic {{ id }} ?"
+      },
+      "detail": {
+        "title": "Topic"
+      },
+      "id": "ID",
+      "label": "Label",
+      "creationDate": "Creation Date",
+      "resource": "Resource"
+    }
+  }
+}

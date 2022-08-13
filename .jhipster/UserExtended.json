@@ -1,0 +1,77 @@
+{
+  "applications": "*",
+  "changelogDate": "20220813153557",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "user_extended",
+  "fields": [
+    {
+      "fieldName": "lastLogin",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "aboutMe",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "occupation",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "socialMedia",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "civilStatus",
+      "fieldType": "CivilStatus",
+      "fieldValues": "MARRIED (Married),DIVORCED (Divorced),WIDOWER (Widower),SEPARATED (Separated),SINGLE (Single),ENGAGED (Engaged),OTHER (Other)"
+    },
+    {
+      "fieldName": "firstchild",
+      "fieldType": "Children",
+      "fieldValues": "AGE_00_03 (age 0-3),AGE_04_06 (age 4-6),AGE_07_09 (age 7-9),AGE_10_12 (age 10-12),AGE_13_15 (age 13-15),AGE_16_18 (age 16-18)"
+    },
+    {
+      "fieldName": "secondchild",
+      "fieldType": "Children",
+      "fieldValues": "AGE_00_03 (age 0-3),AGE_04_06 (age 4-6),AGE_07_09 (age 7-9),AGE_10_12 (age 10-12),AGE_13_15 (age 13-15),AGE_16_18 (age 16-18)"
+    },
+    {
+      "fieldName": "thirdchild",
+      "fieldType": "Children",
+      "fieldValues": "AGE_00_03 (age 0-3),AGE_04_06 (age 4-6),AGE_07_09 (age 7-9),AGE_10_12 (age 10-12),AGE_13_15 (age 13-15),AGE_16_18 (age 16-18)"
+    },
+    {
+      "fieldName": "fourthchild",
+      "fieldType": "Children",
+      "fieldValues": "AGE_00_03 (age 0-3),AGE_04_06 (age 4-6),AGE_07_09 (age 7-9),AGE_10_12 (age 10-12),AGE_13_15 (age 13-15),AGE_16_18 (age 16-18)"
+    },
+    {
+      "fieldName": "filesquota",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "approverSince",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "lastApproval",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "UserExtended",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "ownerSide": true,
+      "relationshipName": "user",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

@@ -31,7 +31,7 @@ public class Topic implements Serializable {
     @Column(name = "creation_date")
     private LocalDate creationDate;
 
-    @ManyToMany(mappedBy = "topics")
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "topics")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @org.springframework.data.annotation.Transient
     @JsonIgnoreProperties(value = { "user", "subject", "topics", "skills" }, allowSetters = true)

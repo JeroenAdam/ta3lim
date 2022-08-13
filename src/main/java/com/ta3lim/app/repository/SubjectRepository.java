@@ -1,6 +1,7 @@
 package com.ta3lim.app.repository;
 
 import com.ta3lim.app.domain.Subject;
+import java.util.Optional;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
@@ -9,4 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 @SuppressWarnings("unused")
 @Repository
-public interface SubjectRepository extends JpaRepository<Subject, Long>, JpaSpecificationExecutor<Subject> {}
+public interface SubjectRepository extends JpaRepository<Subject, Long>, JpaSpecificationExecutor<Subject> {
+    Optional<Subject> findByLabel(String label);
+}

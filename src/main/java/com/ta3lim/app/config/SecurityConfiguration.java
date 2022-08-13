@@ -58,6 +58,7 @@ public class SecurityConfiguration {
         // @formatter:off
         http
             .csrf()
+            .ignoringAntMatchers("/h2-console/**")
             .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
         .and()
             .addFilterBefore(corsFilter, CsrfFilter.class)

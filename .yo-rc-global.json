@@ -1,0 +1,8 @@
+{
+  "generator-jhipster:7.9.2": {
+    "promptValues": {
+      "packageName": "com.ta3lim.app",
+      "nativeLanguage": "en"
+    }
+  }
+}

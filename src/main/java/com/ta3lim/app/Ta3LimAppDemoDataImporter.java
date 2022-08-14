@@ -70,7 +70,7 @@ public class Ta3LimAppDemoDataImporter implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("this ran");
+        System.out.println("Starting import demo data...");
         // fetch all resources
         log.info("Resources found with findAll():");
         log.info("-------------------------------");

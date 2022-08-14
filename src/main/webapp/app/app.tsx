@@ -40,7 +40,7 @@ export const App = () => {
     <BrowserRouter basename={baseHref}>
       <div className="app-container" style={{ paddingTop }}>
         <ToastContainer position={toast.POSITION.TOP_LEFT} className="toastify-container" toastClassName="toastify-toast" />
-        <ErrorBoundary>
+        {/* <ErrorBoundary>
           <Header
             isAuthenticated={isAuthenticated}
             isAdmin={isAdmin}
@@ -49,7 +49,7 @@ export const App = () => {
             isInProduction={isInProduction}
             isOpenAPIEnabled={isOpenAPIEnabled}
           />
-        </ErrorBoundary>
+        </ErrorBoundary> */}
         <div className="container-fluid view-container" id="app-view-container">
           <Card className="jh-card">
             <ErrorBoundary>

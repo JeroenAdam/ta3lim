@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Navigate } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import LoginRedirect from 'app/modules/login/login-redirect';
@@ -22,7 +22,8 @@ const AppRoutes = () => {
   return (
     <div className="view-routes">
       <ErrorBoundaryRoutes>
-        <Route index element={<Home />} />
+        {/* <Route index element={<Home />} /> */}
+        <Route index element={<Navigate replace to="resource/" />} />
         <Route path="logout" element={<Logout />} />
         <Route
           path="admin/*"

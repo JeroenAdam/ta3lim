@@ -14,7 +14,7 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring")
 public interface FavoriteMapper extends EntityMapper<FavoriteDTO, Favorite> {
     @Mapping(target = "user", source = "user", qualifiedByName = "userLogin")
-    @Mapping(target = "resource", source = "resource", qualifiedByName = "resourceId")
+    @Mapping(target = "resource", source = "resource")
     FavoriteDTO toDto(Favorite s);
 
     @Named("userLogin")

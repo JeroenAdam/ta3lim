@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Navigate } from 'react-router-dom';
 
 import ErrorBoundaryRoutes from 'app/shared/error/error-boundary-routes';
 
@@ -19,6 +19,7 @@ export default () => {
     <div>
       <ErrorBoundaryRoutes>
         {/* prettier-ignore */}
+        <Route path="*" element={<Navigate replace to="/resource" />} />
         <Route path="resource/*" element={<Resource />} />
         <Route path="subject/*" element={<Subject />} />
         <Route path="topic/*" element={<Topic />} />

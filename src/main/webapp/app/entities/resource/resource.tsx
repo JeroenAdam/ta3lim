@@ -12,6 +12,8 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { IResource } from 'app/shared/model/resource.model';
 import { searchEntities, getEntities } from './resource.reducer';
 
+import { AccountMenu } from 'app/shared/layout/menus/account';
+
 export const Resource = () => {
   const dispatch = useAppDispatch();
 
@@ -26,6 +28,7 @@ export const Resource = () => {
   const resourceList = useAppSelector(state => state.resource.entities);
   const loading = useAppSelector(state => state.resource.loading);
   const totalItems = useAppSelector(state => state.resource.totalItems);
+  const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
 
   const getAllEntities = () => {
     if (search) {
@@ -124,22 +127,15 @@ export const Resource = () => {
 
   return (
     <div>
-      <h2 id="resource-heading" data-cy="ResourceHeading">
-        <Translate contentKey="ta3LimApp.resource.home.title">Resources</Translate>
-        <div className="d-flex justify-content-end">
-          <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} />{' '}
-            <Translate contentKey="ta3LimApp.resource.home.refreshListLabel">Refresh List</Translate>
-          </Button>
-          <Link to="/resource/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+      <Row>
+        <Col sm="3">
+          <Link to={`resource/new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
             &nbsp;
-            <Translate contentKey="ta3LimApp.resource.home.createLabel">Create new Resource</Translate>
+            <Translate contentKey="ta3LimApp.resource.home.createLabel">Submit Resource</Translate>
           </Link>
-        </div>
-      </h2>
-      <Row>
-        <Col sm="12">
+        </Col>
+        <Col sm="6">
           <Form onSubmit={startSearching}>
             <FormGroup>
               <InputGroup>
@@ -153,12 +149,24 @@ export const Resource = () => {
                 <Button className="input-group-addon">
                   <FontAwesomeIcon icon="search" />
                 </Button>
-                <Button type="reset" className="input-group-addon" onClick={clear}>
-                  <FontAwesomeIcon icon="trash" />
+              </InputGroup>
+            </FormGroup>
+          </Form>
+        </Col>
+        <Col sm="2">
+          <Form onSubmit={startSearching}>
+            <FormGroup>
+              <InputGroup>
+                <Input type="text" name="search" defaultValue={search} onChange={handleSearch} placeholder="Favorites" />
+                <Button className="input-group-addon">
+                  <FontAwesomeIcon icon="list" />
                 </Button>
               </InputGroup>
             </FormGroup>
           </Form>
+        </Col>
+        <Col sm="1">
+          <AccountMenu isAuthenticated={isAuthenticated} />
         </Col>
       </Row>
       <div className="table-responsive">

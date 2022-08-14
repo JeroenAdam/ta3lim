@@ -8,6 +8,18 @@ import { NavDropdown } from './menu-components';
 
 const accountMenuItemsAuthenticated = () => (
   <>
+    <MenuItem icon="user" to="/user-extended/1/edit">
+      <Translate contentKey="global.menu.entities.userExtended" />
+    </MenuItem>
+    <MenuItem icon="envelope" to="/message">
+      <Translate contentKey="global.menu.entities.message" />s
+    </MenuItem>
+    <MenuItem icon="star" to="/favorite">
+      <Translate contentKey="global.menu.entities.favorite" />s
+    </MenuItem>
+    <MenuItem icon="book" to="/admin/docs">
+      <Translate contentKey="global.menu.admin.apidocs">API</Translate>
+    </MenuItem>
     <MenuItem icon="sign-out-alt" to="/logout" data-cy="logout">
       <Translate contentKey="global.menu.account.logout">Sign out</Translate>
     </MenuItem>

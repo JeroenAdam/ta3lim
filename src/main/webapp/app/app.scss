@@ -29,8 +29,10 @@ a {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 1rem;
+    padding-left: 20%;
     .card {
       padding: 1rem;
+      border: 0px;
     }
     .view-routes {
       height: 100%;

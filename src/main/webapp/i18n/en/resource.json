@@ -4,7 +4,7 @@
       "home": {
         "title": "Resources",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Resource",
+        "createLabel": "Submit Resource",
         "createOrEditLabel": "Create or edit a Resource",
         "search": "Search for Resource",
         "notFound": "No Resources found"
@@ -20,7 +20,7 @@
       },
       "id": "ID",
       "title": "Title",
-      "creationDate": "Creation Date",
+      "creationDate": "Created",
       "description": "Description",
       "resourceType": "Resource Type",
       "angeRage": "Ange Rage",
@@ -32,10 +32,11 @@
       "views": "Views",
       "votes": "Votes",
       "approvedBy": "Approved By",
-      "user": "User",
+      "user": "Submitter",
       "subject": "Subject",
       "topics": "Topics",
-      "skills": "Skills"
+      "skills": "Skills",
+      "action": "Action"
     }
   }
 }

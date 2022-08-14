@@ -13,6 +13,7 @@ import { IResource } from 'app/shared/model/resource.model';
 import { searchEntities, getEntities } from './resource.reducer';
 
 import { AccountMenu } from 'app/shared/layout/menus/account';
+import RelativeTime from 'react-relative-time';
 
 export const Resource = () => {
   const dispatch = useAppDispatch();
@@ -129,7 +130,7 @@ export const Resource = () => {
     <div>
       <Row>
         <Col sm="3">
-          <Link to={`resource/new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+          <Link to={`new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
             &nbsp;
             <Translate contentKey="ta3LimApp.resource.home.createLabel">Submit Resource</Translate>
@@ -174,53 +175,26 @@ export const Resource = () => {
           <Table responsive>
             <thead>
               <tr>
-                <th className="hand" onClick={sort('id')}>
-                  <Translate contentKey="ta3LimApp.resource.id">ID</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th className="hand" onClick={sort('title')}>
-                  <Translate contentKey="ta3LimApp.resource.title">Title</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="ta3LimApp.resource.title">Title</Translate>
                 </th>
                 <th className="hand" onClick={sort('creationDate')}>
-                  <Translate contentKey="ta3LimApp.resource.creationDate">Creation Date</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="ta3LimApp.resource.creationDate">Created</Translate>
                 </th>
                 <th className="hand" onClick={sort('description')}>
-                  <Translate contentKey="ta3LimApp.resource.description">Description</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('resourceType')}>
-                  <Translate contentKey="ta3LimApp.resource.resourceType">Resource Type</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('angeRage')}>
-                  <Translate contentKey="ta3LimApp.resource.angeRage">Ange Rage</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('file')}>
-                  <Translate contentKey="ta3LimApp.resource.file">File</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('url')}>
-                  <Translate contentKey="ta3LimApp.resource.url">Url</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('author')}>
-                  <Translate contentKey="ta3LimApp.resource.author">Author</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('lastUpdated')}>
-                  <Translate contentKey="ta3LimApp.resource.lastUpdated">Last Updated</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('activated')}>
-                  <Translate contentKey="ta3LimApp.resource.activated">Activated</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('views')}>
-                  <Translate contentKey="ta3LimApp.resource.views">Views</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="ta3LimApp.resource.description">Description</Translate>
                 </th>
                 <th className="hand" onClick={sort('votes')}>
-                  <Translate contentKey="ta3LimApp.resource.votes">Votes</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
-                <th className="hand" onClick={sort('approvedBy')}>
-                  <Translate contentKey="ta3LimApp.resource.approvedBy">Approved By</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="ta3LimApp.resource.votes">Votes</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="ta3LimApp.resource.user">User</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="ta3LimApp.resource.user">Submitter</Translate>
                 </th>
                 <th>
-                  <Translate contentKey="ta3LimApp.resource.subject">Subject</Translate> <FontAwesomeIcon icon="sort" />
+                  <Translate contentKey="ta3LimApp.resource.subject">Subject</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="ta3LimApp.resource.action">Action</Translate>
                 </th>
                 <th />
               </tr>
@@ -229,55 +203,21 @@ export const Resource = () => {
               {resourceList.map((resource, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
                   <td>
-                    <Button tag={Link} to={`/resource/${resource.id}`} color="link" size="sm">
-                      {resource.id}
+                    <Button tag={Link} to={`${resource.id}`} color="link" size="sm">
+                      {resource.title}
                     </Button>
                   </td>
-                  <td>{resource.title}</td>
                   <td>
-                    {resource.creationDate ? <TextFormat type="date" value={resource.creationDate} format={APP_LOCAL_DATE_FORMAT} /> : null}
+                    {resource.creationDate ? <RelativeTime value={resource.creationDate} titleFormat={APP_LOCAL_DATE_FORMAT} /> : null}
                   </td>
                   <td>{resource.description}</td>
-                  <td>
-                    <Translate contentKey={`ta3LimApp.ResourceType.${resource.resourceType}`} />
-                  </td>
-                  <td>
-                    <Translate contentKey={`ta3LimApp.AgeRange.${resource.angeRage}`} />
-                  </td>
-                  <td>
-                    {resource.file ? (
-                      <div>
-                        {resource.fileContentType ? (
-                          <a onClick={openFile(resource.fileContentType, resource.file)}>
-                            <Translate contentKey="entity.action.open">Open</Translate>
-                            &nbsp;
-                          </a>
-                        ) : null}
-                        <span>
-                          {resource.fileContentType}, {byteSize(resource.file)}
-                        </span>
-                      </div>
-                    ) : null}
-                  </td>
-                  <td>{resource.url}</td>
-                  <td>{resource.author}</td>
-                  <td>
-                    {resource.lastUpdated ? <TextFormat type="date" value={resource.lastUpdated} format={APP_LOCAL_DATE_FORMAT} /> : null}
-                  </td>
-                  <td>{resource.activated ? 'true' : 'false'}</td>
-                  <td>{resource.views}</td>
                   <td>{resource.votes}</td>
-                  <td>{resource.approvedBy}</td>
                   <td>{resource.user ? resource.user.login : ''}</td>
-                  <td>{resource.subject ? <Link to={`/subject/${resource.subject.id}`}>{resource.subject.label}</Link> : ''}</td>
+                  <td>
+                    <strong>{resource.subject ? resource.subject.label : ''}</strong>
+                  </td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`/resource/${resource.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.view">View</Translate>
-                        </span>
-                      </Button>
                       <Button
                         tag={Link}
                         to={`/resource/${resource.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
@@ -285,12 +225,9 @@ export const Resource = () => {
                         size="sm"
                         data-cy="entityEditButton"
                       >
-                        <FontAwesomeIcon icon="pencil-alt" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.edit">Edit</Translate>
-                        </span>
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline"></span>
                       </Button>
-                      <Button
+                      {/* <Button
                         tag={Link}
                         to={`/resource/${resource.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
                         color="danger"
@@ -301,7 +238,7 @@ export const Resource = () => {
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.delete">Delete</Translate>
                         </span>
-                      </Button>
+                      </Button> */}
                     </div>
                   </td>
                 </tr>
@@ -325,7 +262,7 @@ export const Resource = () => {
             <JhiPagination
               activePage={paginationState.activePage}
               onSelect={handlePagination}
-              maxButtons={5}
+              maxButtons={10}
               itemsPerPage={paginationState.itemsPerPage}
               totalItems={totalItems}
             />

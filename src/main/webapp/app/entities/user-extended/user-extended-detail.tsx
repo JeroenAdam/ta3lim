@@ -22,26 +22,8 @@ export const UserExtendedDetail = () => {
   return (
     <Row>
       <Col md="8">
-        <h2 data-cy="userExtendedDetailsHeading">
-          <Translate contentKey="ta3LimApp.userExtended.detail.title">UserExtended</Translate>
-        </h2>
+        <h2 data-cy="userExtendedDetailsHeading">User {userExtendedEntity.user ? userExtendedEntity.user.login : ''}</h2>
         <dl className="jh-entity-details">
-          <dt>
-            <span id="id">
-              <Translate contentKey="global.field.id">ID</Translate>
-            </span>
-          </dt>
-          <dd>{userExtendedEntity.id}</dd>
-          <dt>
-            <span id="lastLogin">
-              <Translate contentKey="ta3LimApp.userExtended.lastLogin">Last Login</Translate>
-            </span>
-          </dt>
-          <dd>
-            {userExtendedEntity.lastLogin ? (
-              <TextFormat value={userExtendedEntity.lastLogin} type="date" format={APP_LOCAL_DATE_FORMAT} />
-            ) : null}
-          </dd>
           <dt>
             <span id="aboutMe">
               <Translate contentKey="ta3LimApp.userExtended.aboutMe">About Me</Translate>
@@ -59,7 +41,11 @@ export const UserExtendedDetail = () => {
               <Translate contentKey="ta3LimApp.userExtended.socialMedia">Social Media</Translate>
             </span>
           </dt>
-          <dd>{userExtendedEntity.socialMedia}</dd>
+          <dd>
+            <a href={userExtendedEntity.socialMedia} target="_blank" rel="noopener noreferrer">
+              {userExtendedEntity.socialMedia}
+            </a>
+          </dd>
           <dt>
             <span id="civilStatus">
               <Translate contentKey="ta3LimApp.userExtended.civilStatus">Civil Status</Translate>
@@ -116,12 +102,8 @@ export const UserExtendedDetail = () => {
               <TextFormat value={userExtendedEntity.lastApproval} type="date" format={APP_LOCAL_DATE_FORMAT} />
             ) : null}
           </dd>
-          <dt>
-            <Translate contentKey="ta3LimApp.userExtended.user">User</Translate>
-          </dt>
-          <dd>{userExtendedEntity.user ? userExtendedEntity.user.login : ''}</dd>
         </dl>
-        <Button tag={Link} to="/user-extended" replace color="info" data-cy="entityDetailsBackButton">
+        <Button tag={Link} to="/" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" />{' '}
           <span className="d-none d-md-inline">
             <Translate contentKey="entity.action.back">Back</Translate>

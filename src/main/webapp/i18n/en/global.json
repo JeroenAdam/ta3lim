@@ -15,7 +15,7 @@
         "notification": "Notification",
         "message": "Message",
         "favorite": "Favorite",
-        "userExtended": "User Extended",
+        "userExtended": "My profile",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
@@ -104,7 +104,7 @@
       "cancel": "Cancel",
       "delete": "Delete",
       "edit": "Edit",
-      "open": "Open",
+      "open": "File: Open",
       "save": "Save",
       "view": "View",
       "show": "Show {{otherEntity}}"
@@ -152,5 +152,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "This is your footer"
+  "footer": "author"
 }

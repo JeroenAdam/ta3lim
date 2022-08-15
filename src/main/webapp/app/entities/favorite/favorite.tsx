@@ -12,6 +12,9 @@ import { useAppDispatch, useAppSelector } from 'app/config/store';
 import { IFavorite } from 'app/shared/model/favorite.model';
 import { searchEntities, getEntities } from './favorite.reducer';
 
+import { AccountMenu } from 'app/shared/layout/menus/account';
+import RelativeTime from 'react-relative-time';
+
 export const Favorite = () => {
   const dispatch = useAppDispatch();
 
@@ -26,6 +29,8 @@ export const Favorite = () => {
   const favoriteList = useAppSelector(state => state.favorite.entities);
   const loading = useAppSelector(state => state.favorite.loading);
   const totalItems = useAppSelector(state => state.favorite.totalItems);
+
+  const isAuthenticated = useAppSelector(state => state.authentication.isAuthenticated);
 
   const getAllEntities = () => {
     if (search) {
@@ -124,22 +129,15 @@ export const Favorite = () => {
 
   return (
     <div>
-      <h2 id="favorite-heading" data-cy="FavoriteHeading">
-        <Translate contentKey="ta3LimApp.favorite.home.title">Favorites</Translate>
-        <div className="d-flex justify-content-end">
-          <Button className="me-2" color="info" onClick={handleSyncList} disabled={loading}>
-            <FontAwesomeIcon icon="sync" spin={loading} />{' '}
-            <Translate contentKey="ta3LimApp.favorite.home.refreshListLabel">Refresh List</Translate>
-          </Button>
+      <Row>
+        <Col sm="2">
           <Link to="/favorite/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
             &nbsp;
             <Translate contentKey="ta3LimApp.favorite.home.createLabel">Create new Favorite</Translate>
           </Link>
-        </div>
-      </h2>
-      <Row>
-        <Col sm="12">
+        </Col>
+        <Col sm="8">
           <Form onSubmit={startSearching}>
             <FormGroup>
               <InputGroup>
@@ -160,15 +158,20 @@ export const Favorite = () => {
             </FormGroup>
           </Form>
         </Col>
+        <Col sm="1">
+          <Button tag={Link} to="/" replace color="info" data-cy="entityDetailsBackButton">
+            <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Back</span>
+          </Button>
+        </Col>
+        <Col sm="1">
+          <AccountMenu isAuthenticated={isAuthenticated} />
+        </Col>
       </Row>
       <div className="table-responsive">
         {favoriteList && favoriteList.length > 0 ? (
           <Table responsive>
             <thead>
               <tr>
-                <th className="hand" onClick={sort('id')}>
-                  <Translate contentKey="ta3LimApp.favorite.id">ID</Translate> <FontAwesomeIcon icon="sort" />
-                </th>
                 <th className="hand" onClick={sort('creationDate')}>
                   <Translate contentKey="ta3LimApp.favorite.creationDate">Creation Date</Translate> <FontAwesomeIcon icon="sort" />
                 </th>
@@ -185,35 +188,12 @@ export const Favorite = () => {
               {favoriteList.map((favorite, i) => (
                 <tr key={`entity-${i}`} data-cy="entityTable">
                   <td>
-                    <Button tag={Link} to={`/favorite/${favorite.id}`} color="link" size="sm">
-                      {favorite.id}
-                    </Button>
-                  </td>
-                  <td>
-                    {favorite.creationDate ? <TextFormat type="date" value={favorite.creationDate} format={APP_LOCAL_DATE_FORMAT} /> : null}
+                    {favorite.creationDate ? <RelativeTime value={favorite.creationDate} titleFormat={APP_LOCAL_DATE_FORMAT} /> : null}
                   </td>
                   <td>{favorite.user ? favorite.user.login : ''}</td>
-                  <td>{favorite.resource ? <Link to={`/resource/${favorite.resource.id}`}>{favorite.resource.id}</Link> : ''}</td>
+                  <td>{favorite.resource ? <Link to={`/resource/${favorite.resource.id}`}>{favorite.resource.title}</Link> : ''}</td>
                   <td className="text-end">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`/favorite/${favorite.id}`} color="info" size="sm" data-cy="entityDetailsButton">
-                        <FontAwesomeIcon icon="eye" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.view">View</Translate>
-                        </span>
-                      </Button>
-                      <Button
-                        tag={Link}
-                        to={`/favorite/${favorite.id}/edit?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}
-                        color="primary"
-                        size="sm"
-                        data-cy="entityEditButton"
-                      >
-                        <FontAwesomeIcon icon="pencil-alt" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.edit">Edit</Translate>
-                        </span>
-                      </Button>
                       <Button
                         tag={Link}
                         to={`/favorite/${favorite.id}/delete?page=${paginationState.activePage}&sort=${paginationState.sort},${paginationState.order}`}

@@ -31,8 +31,10 @@ export const UserExtendedUpdate = () => {
   const civilStatusValues = Object.keys(CivilStatus);
   const childrenValues = Object.keys(Children);
 
+  const account = useAppSelector(state => state.authentication.account);
+
   const handleClose = () => {
-    navigate('/user-extended' + location.search);
+    navigate('/user-extended/1' + location.search);
   };
 
   useEffect(() => {
@@ -101,15 +103,9 @@ export const UserExtendedUpdate = () => {
                   id="user-extended-id"
                   label={translate('global.field.id')}
                   validate={{ required: true }}
+                  hidden
                 />
               ) : null}
-              <ValidatedField
-                label={translate('ta3LimApp.userExtended.lastLogin')}
-                id="user-extended-lastLogin"
-                name="lastLogin"
-                data-cy="lastLogin"
-                type="date"
-              />
               <ValidatedField
                 label={translate('ta3LimApp.userExtended.aboutMe')}
                 id="user-extended-aboutMe"
@@ -217,23 +213,7 @@ export const UserExtendedUpdate = () => {
                 data-cy="lastApproval"
                 type="date"
               />
-              <ValidatedField
-                id="user-extended-user"
-                name="user"
-                data-cy="user"
-                label={translate('ta3LimApp.userExtended.user')}
-                type="select"
-              >
-                <option value="" key="0" />
-                {users
-                  ? users.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.login}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/user-extended" replace color="info">
+              <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/user-extended/1" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
                 <span className="d-none d-md-inline">

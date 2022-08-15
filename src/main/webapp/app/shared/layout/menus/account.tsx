@@ -8,7 +8,7 @@ import { NavDropdown } from './menu-components';
 
 const accountMenuItemsAuthenticated = () => (
   <>
-    <MenuItem icon="user" to="/user-extended/1/edit">
+    <MenuItem icon="user" to="/user-extended/1">
       <Translate contentKey="global.menu.entities.userExtended" />
     </MenuItem>
     <MenuItem icon="envelope" to="/message">

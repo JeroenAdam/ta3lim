@@ -8,7 +8,7 @@ public enum ResourceType {
     DOCUMENTS("documents"),
     PRESENTATION("presentations"),
     IMAGES("images"),
-    URLS("url&#39;s"),
+    URLS("url's"),
     ANNOUNCEMENTS("announcements"),
     OTHER("other");
 

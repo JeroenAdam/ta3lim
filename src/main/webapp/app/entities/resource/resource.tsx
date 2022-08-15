@@ -129,7 +129,7 @@ export const Resource = () => {
   return (
     <div>
       <Row>
-        <Col sm="3">
+        <Col sm="2">
           <Link to={`new`} className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
             <FontAwesomeIcon icon="plus" />
             &nbsp;
@@ -154,7 +154,7 @@ export const Resource = () => {
             </FormGroup>
           </Form>
         </Col>
-        <Col sm="2">
+        <Col sm="3">
           <Form onSubmit={startSearching}>
             <FormGroup>
               <InputGroup>

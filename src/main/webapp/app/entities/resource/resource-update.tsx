@@ -40,6 +40,8 @@ export const ResourceUpdate = () => {
   const resourceTypeValues = Object.keys(ResourceType);
   const ageRangeValues = Object.keys(AgeRange);
 
+  const account = useAppSelector(state => state.authentication.account);
+
   const handleClose = () => {
     navigate('/resource' + location.search);
   };
@@ -98,7 +100,11 @@ export const ResourceUpdate = () => {
       <Row className="justify-content-center">
         <Col md="8">
           <h2 id="ta3LimApp.resource.home.createOrEditLabel" data-cy="ResourceCreateUpdateHeading">
-            <Translate contentKey="ta3LimApp.resource.home.createOrEditLabel">Create or edit a Resource</Translate>
+            {isNew ? (
+              <Translate contentKey="ta3LimApp.resource.home.createLabelNew">Create a Resource</Translate>
+            ) : (
+              <Translate contentKey="ta3LimApp.resource.home.EditLabel">Edit a Resource</Translate>
+            )}
           </h2>
         </Col>
       </Row>
@@ -113,13 +119,15 @@ export const ResourceUpdate = () => {
                   name="id"
                   required
                   readOnly
+                  hidden
                   id="resource-id"
                   label={translate('global.field.id')}
                   validate={{ required: true }}
                 />
               ) : null}
               <ValidatedField
-                label={translate('ta3LimApp.resource.title')}
+                label=""
+                placeholder={translate('ta3LimApp.resource.title')}
                 id="resource-title"
                 name="title"
                 data-cy="title"
@@ -128,103 +136,14 @@ export const ResourceUpdate = () => {
                   required: { value: true, message: translate('entity.validation.required') },
                 }}
               />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.creationDate')}
-                id="resource-creationDate"
-                name="creationDate"
-                data-cy="creationDate"
-                type="date"
-              />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.description')}
-                id="resource-description"
-                name="description"
-                data-cy="description"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.resourceType')}
-                id="resource-resourceType"
-                name="resourceType"
-                data-cy="resourceType"
-                type="select"
-              >
-                {resourceTypeValues.map(resourceType => (
-                  <option value={resourceType} key={resourceType}>
-                    {translate('ta3LimApp.ResourceType.' + resourceType)}
-                  </option>
-                ))}
-              </ValidatedField>
-              <ValidatedField
-                label={translate('ta3LimApp.resource.angeRage')}
-                id="resource-angeRage"
-                name="angeRage"
-                data-cy="angeRage"
-                type="select"
-              >
-                {ageRangeValues.map(ageRange => (
-                  <option value={ageRange} key={ageRange}>
-                    {translate('ta3LimApp.AgeRange.' + ageRange)}
-                  </option>
-                ))}
-              </ValidatedField>
-              <ValidatedBlobField
-                label={translate('ta3LimApp.resource.file')}
-                id="resource-file"
-                name="file"
-                data-cy="file"
-                openActionLabel={translate('entity.action.open')}
-              />
-              <ValidatedField label={translate('ta3LimApp.resource.url')} id="resource-url" name="url" data-cy="url" type="text" />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.author')}
-                id="resource-author"
-                name="author"
-                data-cy="author"
-                type="text"
-              />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.lastUpdated')}
-                id="resource-lastUpdated"
-                name="lastUpdated"
-                data-cy="lastUpdated"
-                type="date"
-              />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.activated')}
-                id="resource-activated"
-                name="activated"
-                data-cy="activated"
-                check
-                type="checkbox"
-              />
-              <ValidatedField label={translate('ta3LimApp.resource.views')} id="resource-views" name="views" data-cy="views" type="text" />
-              <ValidatedField label={translate('ta3LimApp.resource.votes')} id="resource-votes" name="votes" data-cy="votes" type="text" />
-              <ValidatedField
-                label={translate('ta3LimApp.resource.approvedBy')}
-                id="resource-approvedBy"
-                name="approvedBy"
-                data-cy="approvedBy"
-                type="text"
-              />
-              <ValidatedField id="resource-user" name="user" data-cy="user" label={translate('ta3LimApp.resource.user')} type="select">
-                <option value="" key="0" />
-                {users
-                  ? users.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.login}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField
-                id="resource-subject"
-                name="subject"
-                data-cy="subject"
-                label={translate('ta3LimApp.resource.subject')}
-                type="select"
-              >
-                <option value="" key="0" />
+              <Link to="/subject/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+                <FontAwesomeIcon icon="plus" />
+                &nbsp;New Subject
+              </Link>
+              <ValidatedField id="resource-subject" name="subject" data-cy="subject" label="" type="select">
+                <option value="" disabled selected>
+                  Choose a {translate('ta3LimApp.resource.subject')}
+                </option>
                 {subjects
                   ? subjects.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
@@ -234,14 +153,76 @@ export const ResourceUpdate = () => {
                   : null}
               </ValidatedField>
               <ValidatedField
-                label={translate('ta3LimApp.resource.topics')}
-                id="resource-topics"
-                data-cy="topics"
-                type="select"
-                multiple
-                name="topics"
-              >
-                <option value="" key="0" />
+                row
+                style={{ height: 100 }}
+                label=""
+                placeholder="Description (you can resize this box by dragging the mouse on the bottom right corner)"
+                id="resource-description"
+                name="description"
+                data-cy="description"
+                type="textarea"
+              />
+              <ValidatedField label="" id="resource-resourceType" name="resourceType" data-cy="resourceType" type="select">
+                <option value="" disabled selected>
+                  Choose a {translate('ta3LimApp.resource.resourceType')}
+                </option>
+                {resourceTypeValues.map(resourceType => (
+                  <option value={resourceType} key={resourceType}>
+                    {translate('ta3LimApp.ResourceType.' + resourceType)}
+                  </option>
+                ))}
+              </ValidatedField>
+              <ValidatedField label="" id="resource-angeRage" name="angeRage" data-cy="angeRage" type="select">
+                <option value="" disabled selected>
+                  Choose a {translate('ta3LimApp.resource.ageRange')}
+                </option>
+                {ageRangeValues.map(ageRange => (
+                  <option value={ageRange} key={ageRange}>
+                    {translate('ta3LimApp.AgeRange.' + ageRange)}
+                  </option>
+                ))}
+              </ValidatedField>
+              <ValidatedBlobField
+                label=""
+                id="resource-file"
+                name="file"
+                data-cy="file"
+                openActionLabel={translate('entity.action.open')}
+              />
+              <ValidatedField
+                label=""
+                placeholder={translate('ta3LimApp.resource.urlplaceholder')}
+                id="resource-url"
+                name="url"
+                data-cy="url"
+                type="text"
+              />
+              <ValidatedField
+                label=""
+                placeholder={translate('ta3LimApp.resource.authorplaceholder')}
+                id="resource-author"
+                name="author"
+                data-cy="author"
+                type="text"
+              />
+              <ValidatedField
+                id="resource-user"
+                name="user"
+                data-cy="user"
+                label={translate('ta3LimApp.resource.user')}
+                type="text"
+                value={account.id}
+                hidden
+              ></ValidatedField>
+              <Link to="/topic/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+                <FontAwesomeIcon icon="plus" />
+                &nbsp;New Topic
+              </Link>
+              <ValidatedField label="" id="resource-topics" data-cy="topics" type="select" multiple name="topics">
+                <option value="" disabled>
+                  (optional) Choose topic(s) below
+                </option>
+                <option value="" selected key="0" />
                 {topics
                   ? topics.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
@@ -250,15 +231,15 @@ export const ResourceUpdate = () => {
                     ))
                   : null}
               </ValidatedField>
-              <ValidatedField
-                label={translate('ta3LimApp.resource.skills')}
-                id="resource-skills"
-                data-cy="skills"
-                type="select"
-                multiple
-                name="skills"
-              >
-                <option value="" key="0" />
+              <Link to="/skill/new" className="btn btn-primary jh-create-entity" id="jh-create-entity" data-cy="entityCreateButton">
+                <FontAwesomeIcon icon="plus" />
+                &nbsp;New Skill
+              </Link>
+              <ValidatedField label="" id="resource-skills" data-cy="skills" type="select" multiple name="skills">
+                <option value="" disabled>
+                  (optional) Choose skill(s) below
+                </option>
+                <option value="" selected key="0" />
                 {skills
                   ? skills.map(otherEntity => (
                       <option value={otherEntity.id} key={otherEntity.id}>
@@ -267,6 +248,11 @@ export const ResourceUpdate = () => {
                     ))
                   : null}
               </ValidatedField>
+              {!isNew ? (
+                <p>
+                  {translate('ta3LimApp.resource.lastUpdated')}: {resourceEntity.lastUpdated}
+                </p>
+              ) : null}
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/resource" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;

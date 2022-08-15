@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { Button, Input, InputGroup, FormGroup, Form, Row, Col, Table } from 'reactstrap';
 import { Translate, translate, TextFormat, getSortState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -124,6 +124,7 @@ export const Skill = () => {
 
   return (
     <div>
+      {<Navigate replace to="/resource/new" />}
       <h2 id="skill-heading" data-cy="SkillHeading">
         <Translate contentKey="ta3LimApp.skill.home.title">Skills</Translate>
         <div className="d-flex justify-content-end">

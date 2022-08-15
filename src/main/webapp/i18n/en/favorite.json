@@ -4,7 +4,7 @@
       "home": {
         "title": "Favorites",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Create a new Favorite",
+        "createLabel": "Add Favorite",
         "createOrEditLabel": "Create or edit a Favorite",
         "search": "Search for Favorite",
         "notFound": "No Favorites found"

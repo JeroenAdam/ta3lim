@@ -35,6 +35,7 @@ public class Resource implements Serializable {
     @Column(name = "creation_date")
     private LocalDate creationDate;
 
+    @Lob
     @Column(name = "description")
     private String description;
 

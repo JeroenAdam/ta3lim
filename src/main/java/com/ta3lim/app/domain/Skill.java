@@ -37,7 +37,12 @@ public class Skill implements Serializable {
     @JsonIgnoreProperties(value = { "user", "subject", "topics", "skills" }, allowSetters = true)
     private Set<Resource> resources = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    public Skill() {}
+
+    public Skill(String label, LocalDate creationDate) {
+        this.label = label;
+        this.creationDate = creationDate;
+    }
 
     public Long getId() {
         return this.id;

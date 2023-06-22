@@ -35,6 +35,14 @@ public class Favorite implements Serializable {
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
+    public Favorite() {}
+
+    public Favorite(User user, Resource resource, LocalDate creationDate) {
+        this.user = user;
+        this.resource = resource;
+        this.creationDate = creationDate;
+    }
+
     public Long getId() {
         return this.id;
     }

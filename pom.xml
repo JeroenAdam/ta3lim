@@ -507,6 +507,7 @@
                     <artifactId>frontend-maven-plugin</artifactId>
                     <version>${frontend-maven-plugin.version}</version>
                     <configuration>
+                        <arguments>install --force</arguments> 
                         <installDirectory>target</installDirectory>
                     </configuration>
                 </plugin>
@@ -955,6 +956,7 @@
                     <groupId>com.h2database</groupId>
                     <artifactId>h2</artifactId>
                     <version>${h2.version}</version>
+                    <scope>compile</scope>
                 </dependency>
             </dependencies>
             <build>

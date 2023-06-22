@@ -2,6 +2,7 @@ package com.ta3lim.app.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
+import java.time.LocalDate;
 import javax.persistence.*;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -30,6 +31,13 @@ public class Votes implements Serializable {
     private Resource resource;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
+
+    public Votes() {}
+
+    public Votes(User user, Resource resource) {
+        this.user = user;
+        this.resource = resource;
+    }
 
     public Long getId() {
         return this.id;

@@ -37,7 +37,15 @@ public class Message implements Serializable {
     @ManyToOne
     private User sender;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    public Message(String messageText, LocalDate creationDate, Boolean isDelivered, User receiver, User sender) {
+        this.creationDate = creationDate;
+        this.messageText = messageText;
+        this.isDelivered = isDelivered;
+        this.receiver = receiver;
+        this.sender = sender;
+    }
+
+    public Message() {}
 
     public Long getId() {
         return this.id;

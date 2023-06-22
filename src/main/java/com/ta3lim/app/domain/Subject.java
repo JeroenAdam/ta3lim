@@ -28,7 +28,12 @@ public class Subject implements Serializable {
     @Column(name = "creation_date")
     private LocalDate creationDate;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
+    public Subject() {}
+
+    public Subject(String label, LocalDate creationDate) {
+        this.label = label;
+        this.creationDate = creationDate;
+    }
 
     public Long getId() {
         return this.id;
